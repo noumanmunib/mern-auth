@@ -26,7 +26,7 @@ export const login = async (req, res, next) => {
     const { password: hashedPassword, ...rest } = validUser._doc;
     const expiryDate = new Date(Date.now() + 3600000); // 1 hour
     res
-      .cookie("access_token", token, { httpOnly: true, expiry: expiryDate })
+      .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
       .status(201)
       .json(rest);
   } catch (err) {
